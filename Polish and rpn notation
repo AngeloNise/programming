@@ -18,7 +18,7 @@ void pre_in()
 {
 	//variable declaration
 	int n,i;
-	char a,b,op;
+	char a,op;
 	printf("*******PREFIX TO INFIX*******\n\n");
 	printf("Enter the prefix expression: ");
 	
@@ -58,7 +58,7 @@ void post_in()
 {
 	//variable declaration
 	int n,i,j=0;
-	char a,b,op,x[20];
+	char a,op,x[20];
 	printf("*****POSTFIX TO INFIX*****\n\n");
 	printf("Enter postfix expression: ");
 	
