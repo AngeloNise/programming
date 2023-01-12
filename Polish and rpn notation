@@ -99,6 +99,10 @@ void post_in()
 		system("cls");
 }
 
+void exit_prog()
+{
+}
+
 void main()
 {
 	//variable declaration
@@ -123,7 +127,7 @@ void main()
 			break;
 	    case 2: post_in();
 			break;
-	    case 3: exit(0);
+	    case 3: exit_prog(0);
 			break;
 	    default: printf("Wrong chioce\n");
 	    getch();
@@ -132,13 +136,13 @@ void main()
 		printf("~~~~~~~~OPTIONS~~~~~~~~\n\n");
 		
 		//Asking if the user wants to continue or not
-		printf("   Do you want to\n[1] CONTINUE | [0] EXIT\n\nEnter your choice: ");
+		printf("Do you want to continue the program \n[1] YES | [0] EXIT\n\nEnter your choice: ");
 		scanf("%d",&ch);
 		system("cls");
 		if(ch==0)
 		{
 			//Verifying if the user wants to exit the program
-			printf("Are you sure you want to exit [1 = yes || 0 = no]: ");
+			printf("Are you sure you want to exit [1 = YES || 0 = NO]: ");
 			scanf("%d",&ch);
 			system("cls");
 			if(ch==1)
