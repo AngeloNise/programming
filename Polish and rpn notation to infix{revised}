@@ -1,0 +1,150 @@
+#include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<stdlib.h>
+
+char str[20], stack[20];
+int top=-1;
+void push(char c)
+{
+	stack[++top]=c;
+}
+char pop()
+{
+	return stack[top--];
+}
+
+void pre_in()
+{
+	//variable declaration
+	int n,i;
+	char a,op;
+	printf("*******PREFIX TO INFIX*******\n\n");
+	printf("**{SPACEBAR IS PROHIBITED}**\n\nEnter the prefix expression: ");
+	
+	//removes inputs which are taken from user
+	fflush(stdin);
+	
+	//read a user input string from a prefix expression (EX. + * 4 B - C 5)
+	gets(str);
+	
+	//n is the length of string
+	n=strlen(str);
+	
+	printf("\nInfix expression is: ");
+	for(i=0;i<n;i++)
+	{
+		//checks the string if it has an operator
+		if(str[i]=='+'||str[i]=='-'||str[i]=='*'||str[i]=='/'||str[i]=='^')
+		{
+			//operator stored on the stack
+			push(str[i]);
+		}
+		//pop operand followed by an operator
+		else
+		{
+			op=pop();
+			a=str[i];
+			printf("%c%c",a,op);
+		}
+	}
+	//print the Infix expression (EX. 4 * B + C - 5)
+	printf("%c",str[top--]);
+	printf("\n\npress any key to continue...");
+	getch();
+	system("cls");
+}
+
+void post_in()
+{
+	//variable declaration
+	int n,i,j=0;
+	char a,op,x[20];
+	printf("*****POSTFIX TO INFIX*****\n\n");
+	printf("**{SPACEBAR IS PROHIBITED}**\n\nEnter postfix expression: ");
+	
+	//removes inputs which are taken from user
+	fflush(stdin);
+	
+	//read a user input string from a postfix expression (EX. 4 B * C + 5 -)
+	gets(str);
+	
+	//reverse the given string (EX. 4 B * C + 5 - rev.str = - 5 + C * B 4)
+	strrev(str);
+	
+	//n is the length of string
+	n=strlen(str);
+		printf("\nInfix expression is: ");
+		for(i=0;i<n;i++)
+		{
+			//checks the string if it has an operator
+			if(str[i]=='+'||str[i]=='-'||str[i]=='*'||str[i]=='/'||str[i]=='^')
+			{
+				//operator stored on the stack
+				push(str[i]);
+			}
+			//pop operand followed by an operator
+			else
+			{
+				x[j]=str[i]; j++;
+				x[j]=pop(); j++;
+			}
+		}
+		
+		//reverse the output string (EX. 5 - C + B * 4 rev.str = 4 * B + C - 5)
+		strrev(x);
+		
+		//print Infix expression (EX. 4 * B + C - 5)
+		printf("%s",x);
+		printf("\n\npress any key to continue...");
+		getch();
+		system("cls");
+}
+
+void exit_prog()
+{
+	
+}
+
+void main()
+{
+	//variable declaration
+	int ch;
+    while(1)
+    {
+    	printf("~~~~~~~~~~<|<GROUP 3>|>~~~~~~~~~~\nPOLISH AND RPN NOTATION TO INFIX\n\n");
+    	printf("~~~~~~OPTIONS~~~~~~\n\n");
+    	
+    	//Given option in MENU
+    	printf("[1] PREFIX TO INFIX");
+    	printf("\n[2] POSTFIX TO INFIX");
+    	printf("\n[3] EXIT PROGRAM");
+    	printf("\n\nEnter your choice(1-3): ");
+    	scanf("%d",&ch);
+    	system("cls");
+    	
+    	//Choices of what conversion the user will use
+    	switch(ch)
+    	{
+		case 1: pre_in();
+			break;
+	    case 2: post_in();
+			break;
+	    case 3: exit_prog(0);
+	    {
+			//Verifying if the user wants to exit the program
+			printf("\nyou type 3, and it says there <<EXIT PROGRAM>>\n\nAre you sure you want to exit?\n[1 = YES || 0 = NO]: ");
+			scanf("%d",&ch);
+			system("cls");
+			if(ch==1)
+			return 0;
+		}
+			break;
+	    default: printf("Wrong choice\n");
+	    printf("\n\npress any key to continue...");
+	    getch();
+	    system("cls");
+		}
+		
+	}
+}
